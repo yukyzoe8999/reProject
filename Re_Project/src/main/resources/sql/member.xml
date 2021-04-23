@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="member">
+
+	<select id="selectMember4Login"
+		parameterType="pp.member.LoginVO" resultType="pp.member.UserVO">
+		SELECT USERNO, id, password,
+		name, email
+		FROM user
+		WHERE id='${id}' AND password = '${password}'
+	</select>
+
+	<select id="insertMember4Signup"
+		parameterType="pp.member.UserVO">
+		 INSERT INTO user (id, password, name, email)
+		 VALUES ('${id}', '${password}', '${name}', '${email}')
+	</select>
+	
+	<select id="idCheck" parameterType="String" resultType="int">
+      SELECT COUNT(*)
+          FROM user where id = '${id}';
+    </select>
+
+	<!-- <insert id="insertLogIn" parameterType="String"> -->
+	<!-- INSERT INTO COM_LOGINOUT (USERNO, LTYPE, LDATE) -->
+	<!-- VALUES (#{userno}, 'I', NOW() ); -->
+	<!-- </insert> -->
+
+	<!-- <insert id="insertLogOut" parameterType="String"> -->
+	<!-- INSERT INTO COM_LOGINOUT (USERNO, LTYPE, LDATE) -->
+	<!-- VALUES (#{userno}, 'O', NOW() ); -->
+	<!-- </insert> -->
+
+
+	<!-- <select id="selectUserOne" parameterType="String" -->
+	<!-- resultType="gu.member.UserVO"> -->
+	<!-- SELECT USERNO, USERID, USERNM, USERPW, USERROLE, PHOTO, DEPTNO -->
+	<!-- FROM COM_USER -->
+	<!-- WHERE DELETEFLAG='N' -->
+	<!-- AND USERNO=#{userno} -->
+	<!-- </select> -->
+
+
+	<!-- <delete id="deleteUser" parameterType="String"> -->
+	<!-- UPDATE COM_USER -->
+	<!-- SET DELETEFLAG='Y' -->
+	<!-- WHERE USERNO=#{userno} -->
+	<!-- </delete> -->
+
+	<!-- <update id="updateUserPassword" parameterType="gu.member.UserVO"> -->
+	<!-- UPDATE COM_USER -->
+	<!-- SET USERPW=SHA2(#{userpw}, 256) -->
+	<!-- WHERE USERNO=#{userno} -->
+	<!-- </update> -->
+
+	<!-- <update id="updateUserByMe" parameterType="gu.member.UserVO"> -->
+	<!-- UPDATE COM_USER -->
+	<!-- SET USERNM=#{usernm} -->
+
+	<!-- WHERE DELETEFLAG='N' -->
+	<!-- AND USERNO=#{userno} -->
+	<!-- </update> -->
+
+	<!-- 유저조회 -->
+	<!-- <select id="searchMember" resultType="gu.member.UserVO" parameterType="gu.board.BoardSearchVO"> -->
+	<!-- SELECT * FROM com_user WHERE USERNM like '%${searchKeyword}%' -->
+	<!-- </select> -->
+</mapper>
+

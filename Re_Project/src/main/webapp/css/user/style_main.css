@@ -1,0 +1,200 @@
+@charset "UTF-8";
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.wrap {
+    width: 100%;
+
+}
+
+.inner {
+    width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.header {
+    width: 100%;
+    height: 120px;
+    text-align: center;
+    float: left;
+
+}
+
+.header .navbar_right {
+    width: 300px;
+    float: right;
+    position: relative;
+    top: 5px;
+
+}
+
+.header h1 {
+    width: 200px;
+    position: relative;
+    top: 10px;
+    left: 530px;
+
+}
+
+.header h1 img {
+
+    height: 100px;
+}
+
+.header .navbar_right ul li {
+    list-style-type: none;
+    float: left;
+    padding-left: 20px;
+
+}
+
+.header .navbar_right ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+.middle_bar {
+    width: 100%;
+    float: left;
+    background-color: rgb(194, 194, 194);
+
+}
+
+.middle_bar .inner ul li {
+    width: 10%;
+    list-style-type: none;
+    float: left;
+    padding: 10px 0px 10px;
+    text-align: center;
+    position: relative;
+    left: 310px;
+    border-right: 1px solid rgb(161, 161, 161);
+}
+.middle_bar .inner ul li a {
+    text-decoration: none;
+    color: white;
+}
+
+.middle_bar .inner ul li:nth-child(5) {
+    border-right: none;
+}
+
+.mainslider {
+    width: 100%;
+    float: left;
+}
+
+.mainslider .firstslider div img {
+    display: block;
+    width: 100%;
+} 
+.mainslider .firstslider div img:last-child{
+	height: 405px;
+}
+.sliderbutton {
+    position: absolute;
+    animation: ScrollDownButton__blink-3EqJg 1s infinite;
+    width: 56px;
+    height: 56px;
+    left: calc(50% - 25px);
+    top:522px;
+    bottom: 0;
+    border: none;
+    outline: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+}
+
+.sliderbutton i {
+	font-size: 40px;
+	color: rgb(126, 126, 126);
+}
+
+.information_box .info {
+    display: inline-block;
+}
+
+.pic_info {
+    text-align: center;
+    width: 100%;
+}
+
+.pic_info .inner p {
+    color: black;
+    font-weight: bold;
+}
+
+.info {width:100%; position:relative;list-style:none;   margin-left: 60px;}
+
+.one_quarter {
+  padding-left:5px;
+    position:relative; height:100%; width:30%;
+    float: left;
+    list-style: none;
+}
+.contentlist {
+	font-weight: bold;
+}
+.one_quarter img {
+	
+	border:none;
+	width:90%;
+	padding:10px;
+}
+.contentlist {
+	float:left;
+	text-decoration:none;
+	list-style:none;
+	text-align: center;
+	width:200px;
+}
+
+.koreadetail .bx-wrapper {
+    display: none;
+}
+
+
+.koreadetail .slider li {
+    width: 110px !important;
+    margin-right: 10px !important;
+}
+
+
+
+.koreadetail .bx-viewport{
+   height: 115.328px !important;
+}
+.usadetail .bx-wrapper {
+    display: none;
+}
+
+
+.usadetail .slider li {
+    width: 110px !important;
+    margin-right: 10px !important;
+}
+
+
+
+.usadetail .bx-viewport{
+   height: 115.328px !important;
+}
+.japandetail .bx-wrapper {
+    display: none;
+}
+
+
+.japandetail .slider li {
+    width: 110px !important;
+    margin-right: 10px !important;
+}
+
+
+
+.japandetail .bx-viewport{
+   height: 115.328px !important;
+}

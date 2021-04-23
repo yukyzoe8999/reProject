@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="tourdetail">
+
+	<select id="selectLocalName" parameterType="String" resultType="pp.TourDetail.TDVO">
+		SELECT cityid, location_num, location,sumup, information
+		FROM tour_list 
+		WHERE cityid='${cityid}'
+	</select>
+
+<!-- 	<select id="insertMember4Signup" -->
+<!-- 		parameterType="pp.member.UserVO"> -->
+<!-- 		 INSERT INTO user (id, password, name, email) -->
+<!-- 		 VALUES ('${id}', '${password}', '${name}', '${email}') -->
+<!-- 	</select> -->
+
+</mapper>
+

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+	<!-- <sql id="includeBoard"> -->
+	<!-- WHERE BRDDELETEFLAG='N' AND TBG.BGDELETEFLAG='N' -->
+	<!-- <if test="bgno!=null and bgno!=''"> -->
+	<!-- AND TB.BGNO=#{bgno} -->
+	<!-- </if> -->
+	<!-- <if test="searchKeyword!=null and searchKeyword!='' and searchType!=''"> -->
+	<!-- <foreach item="item" index="index" collection="searchTypeArr" separator=" 
+		OR " open="AND (" close=")"> -->
+	<!-- ${item} LIKE CONCAT('%', #{searchKeyword},'%' ) -->
+	<!-- </foreach> -->
+	<!-- </if> -->
+	<!-- </sql> -->
+
+	<select id="selectBoardCount" resultType="Integer"
+		parameterType="pp.board.BoardSearchVO">
+		Select count(num.bid) as count from (Select @rownum:=@rownum+1 as num , n.*
+		from(select * From board where ${searchType} like '%${searchKeyword}%'
+		order by bid desc)n Where (@rownum:=0)=0) num
+
+	</select>
+
+	<select id="selectBoardList" resultType="pp.board.BoardVO"
+		parameterType="pp.board.BoardSearchVO">
+		Select * from (Select @rownum:=@rownum+1 as num , n.*
+		from(select *
+		From board
+		where ${searchType} like '%${searchKeyword}%'
+		order by bid desc)n
+		Where (@rownum:=0)=0) num
+		<if test="rowStart != null">
+			LIMIT ${rowStart-1}, 10
+		</if>
+	</select>
+
+	<select id="selectBoardRead" resultType="pp.board.BoardVO"
+		parameterType="String">
+		SELECT * FROM board WHERE bid = ${bid}
+	</select>
+	<select id="insertBoardComment" resultType="pp.board.CommentVO"
+		parameterType="String">
+		insert into boardcomment (mid,comment,writerID)values('${mid}'
+		,'${comment}', '${writerID}')
+
+	</select>
+
+	<select id="selectBoardComment" resultType="pp.board.CommentVO"
+		parameterType="String">
+		SELECT * FROM boardcomment WHERE mid = ${param} order by regdate desc
+	</select>
+
+	<select id="deleteBoard" resultType="pp.board.BoardVO"
+		parameterType="String">
+		delete from board where bid= ${param}
+	</select>
+
+	<select id="insertBoard" resultType="pp.board.BoardVO"
+		parameterType="String">
+		insert into board (title, writer_id, content, files) values('${title}',
+		'${writer_id}','${content}','${files}')
+	</select>
+<select id="CountBoardComment" resultType="pp.board.CommentVO"
+		parameterType="String">
+		select count(cid) from boardcomment where mid = ${bid}
+
+	</select>
+
+
+
+</mapper>
+
