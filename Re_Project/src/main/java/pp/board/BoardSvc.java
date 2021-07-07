@@ -66,4 +66,9 @@ public class BoardSvc {
 
 		return sqlSession.selectOne("CountBoardComment", param);
 	}
+
+	public Object insertBoard(BoardVO view) {
+		return sqlSession.selectOne("insertBoard", view);
+		
+	}
 }

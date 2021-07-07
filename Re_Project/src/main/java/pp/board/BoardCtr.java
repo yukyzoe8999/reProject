@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import pp.common.FileUtil;
 import pp.common.FileVO;
@@ -19,6 +20,9 @@ public class BoardCtr {
 
 	@Autowired
 	private BoardSvc boardSvc;
+	
+	@Autowired
+	private UtilSvc us;
 	
 	@RequestMapping(value="board")
 	public String BoardList(HttpServletRequest req, BoardSearchVO bo, ModelMap modelMap) {
@@ -114,13 +118,21 @@ public class BoardCtr {
 
 		return "redirect:board";
 	}
-	@RequestMapping(value = "boardReg")
+	@RequestMapping(value = "Reg")
 	public String boardReg(HttpServletRequest request, ModelMap modelMap) {
 
 //        String userno = request.getSession().getAttribute("userno").toString();
 //        String bgno = request.getParameter("bgno");
 
 
+		return "board/Reg";
+	}
+	// 글 쓰기(Post)
+	@RequestMapping(value="/boardReg", method=RequestMethod.POST)
+	public String boardwritepost(HttpServletRequest req, BoardVO view) {
+		view.setTitle(us.html2text(view.getTitle()));
+		
+		boardSvc.insertBoard(view);
 		return "redirect:board";
 	}
 }

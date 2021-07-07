@@ -57,7 +57,7 @@
 			<div class="d_table">
 				<table class="texttable">
 					<tr class="tabletitle">
-						<td>번호</td>
+<!-- 						<td>번호</td> -->
 						<td>제목</td>
 						<td>작성자</td>
 						<td>작성일</td>
@@ -65,7 +65,7 @@
 					</tr>
 					<c:forEach var="n" items="${list}" varStatus="t">
 						<tr>
-							<td>${n.bid}</td>
+<%-- 							<td>${n.bid}</td> --%>
 							<td><a
 								href="boardRead?bid=${n.bid}&f=${param.f}&q=${param.q}&p=${param.p}">${n.title}</a></td>
 							<td>${n.writer_id}</td>
